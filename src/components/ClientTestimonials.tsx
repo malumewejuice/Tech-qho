@@ -12,15 +12,17 @@ const ClientTestimonials = () => {
       avatar: 'MZ'
     },
     {
-      name: 'Michael Chen',
-      position: 'CTO, Digital Solutions',
-      company: 'Digital Solutions',
+      name: 'Thato Ximba',
+      position: 'CTO, Lew Prop Construction
+',
+      company: 'Lew Prop Construction
+',
       content: 'The web application they built for us is not only beautiful but incredibly fast and user-friendly. Our conversion rates have increased by 40% since launch.',
       rating: 5,
       avatar: 'MC'
     },
     {
-      name: 'Emily Rodriguez',
+      name: 'Lerato Dlamini',
       position: 'Operations Director, LogiFlow',
       company: 'LogiFlow',
       content: 'Their chatbot solution has revolutionized our customer service. We now handle 3x more inquiries with the same team size and customer satisfaction is at an all-time high.',
@@ -31,7 +33,8 @@ const ClientTestimonials = () => {
 
   const clientLogos = [
     'TechStart',
-    'Digital Solutions',
+    'Lew Prop Construction
+',
     'LogiFlow',
     'Innovation Corp',
     'Future Systems',
