@@ -6,7 +6,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Services from "./pages/Services";
 import AIAutomation from "./pages/AIAutomation";
+import WebDevelopment from "./pages/WebDevelopment";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,9 +24,9 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           {/* Placeholder routes - will be created next */}
-          <Route path="/services" element={<NotFound />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/services/ai-automation" element={<AIAutomation />} />
-          <Route path="/services/web-development" element={<NotFound />} />
+          <Route path="/services/web-development" element={<WebDevelopment />} />
           <Route path="/portfolio" element={<NotFound />} />
           <Route path="/blog" element={<NotFound />} />
           <Route path="/faq" element={<NotFound />} />
