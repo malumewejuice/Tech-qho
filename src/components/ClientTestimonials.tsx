@@ -13,13 +13,11 @@ const ClientTestimonials = () => {
     },
     {
       name: 'Thato Ximba',
-      position: 'CTO, Lew Prop Construction
-',
-      company: 'Lew Prop Construction
-',
+      position: 'CTO, Lew Prop Construction',
+      company: 'Lew Prop Construction',
       content: 'The web application they built for us is not only beautiful but incredibly fast and user-friendly. Our conversion rates have increased by 40% since launch.',
       rating: 5,
-      avatar: 'MC'
+      avatar: 'TX'
     },
     {
       name: 'Lerato Dlamini',
@@ -33,8 +31,7 @@ const ClientTestimonials = () => {
 
   const clientLogos = [
     'TechStart',
-    'Lew Prop Construction
-',
+    'Lew Prop Construction',
     'LogiFlow',
     'Innovation Corp',
     'Future Systems',
