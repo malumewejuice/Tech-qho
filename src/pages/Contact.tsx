@@ -83,11 +83,10 @@ const Contact = () => {
                         <SelectValue placeholder="Select budget range" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="under-10k">Under $10,000</SelectItem>
-                        <SelectItem value="10k-25k">$10,000 - $25,000</SelectItem>
-                        <SelectItem value="25k-50k">$25,000 - $50,000</SelectItem>
-                        <SelectItem value="50k-100k">$50,000 - $100,000</SelectItem>
-                        <SelectItem value="over-100k">Over $100,000</SelectItem>
+                        <SelectItem value="under-1k">Under R1000</SelectItem>
+                        <SelectItem value="10k-25k">R10000 - R25,000</SelectItem>
+                        <SelectItem value="25k-50k">R25,000 - R50,000</SelectItem>
+                        <SelectItem value="over-100k">Over R100,000</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -131,7 +130,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <h3 className="font-semibold text-primary">Phone</h3>
-                        <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                        <p className="text-muted-foreground">061 512 6221</p>
                       </div>
                     </div>
                     
@@ -142,8 +141,8 @@ const Contact = () => {
                       <div>
                         <h3 className="font-semibold text-primary">Address</h3>
                         <p className="text-muted-foreground">
-                          123 Innovation Drive<br />
-                          San Francisco, CA 94107
+                          240 Apex street<br />
+                          Johannesburg,2091
                         </p>
                       </div>
                     </div>
@@ -155,7 +154,7 @@ const Contact = () => {
                       <div>
                         <h3 className="font-semibold text-primary">Business Hours</h3>
                         <p className="text-muted-foreground">
-                          Mon - Fri: 9:00 AM - 6:00 PM PST<br />
+                          Mon - Fri: 9:00 AM - 6:00 PM GMT<br />
                           Sat - Sun: Emergency support only
                         </p>
                       </div>
@@ -167,10 +166,10 @@ const Contact = () => {
                 <Card className="card-shadow">
                   <CardContent className="p-0">
                     <div className="h-64 bg-muted rounded-lg flex items-center justify-center">
-                      <div className="text-center">
+                      <div className="text-center"
                         <MapPin className="w-12 h-12 text-accent mx-auto mb-2" />
-                        <p className="text-muted-foreground">Interactive Map</p>
-                        <p className="text-sm text-muted-foreground">San Francisco, CA</p>
+                        <p className="text-muted-foreground">https://maps.app.goo.gl/ZH3i2NKbakdeLvbd6</p>
+                        <p className="text-sm text-muted-foreground">Johannesburg South</p>
                       </div>
                     </div>
                   </CardContent>
