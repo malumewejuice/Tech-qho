@@ -168,7 +168,6 @@ const Contact = () => {
                     <div className="h-64 bg-muted rounded-lg flex items-center justify-center">
                       <div className="text-center">
                         <MapPin className="w-12 h-12 text-accent mx-auto mb-2" />
-                        <p className="text-muted-foreground">https://maps.app.goo.gl/ZH3i2NKbakdeLvbd6</p>
                         <p className="text-sm text-muted-foreground">Johannesburg South</p>
                       </div>
                     </div>
