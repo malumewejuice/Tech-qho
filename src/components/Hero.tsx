@@ -60,7 +60,7 @@ const Hero = () => {
             <Button 
               variant="outline" 
               size="lg"
-              className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 px-8 py-4 text-lg backdrop-blur-sm group"
+              className="border-muted-foreground/30 text-muted-foreground hover:bg-muted/10 px-8 py-4 text-lg backdrop-blur-sm group"
             >
               <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
               Watch Demo
