@@ -49,7 +49,7 @@ const ServiceHighlight = () => {
           {services.map((service, index) => (
             <Card key={service.category} className="card-shadow hover:elevated-shadow transition-smooth group">
               <CardHeader className="text-center pb-8">
-                <div className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${service.gradient} opacity-80 flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-sky-200 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <service.icon className="w-8 h-8 text-primary" />
                 </div>
                 <CardTitle className="text-2xl font-bold text-primary mb-2">
