@@ -104,7 +104,7 @@ const ServiceHighlight = () => {
               className="bg-primary text-white hover:bg-primary/90 px-8"
               asChild
             >
-              <Link to="/contact">
+              <Link to="/contact" className="text-white">
                 Let's Connect You
                 <ArrowRight className="ml-2 h-5 w-5 text-sky-400" />
               </Link>
