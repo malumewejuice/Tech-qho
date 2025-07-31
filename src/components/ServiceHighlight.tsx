@@ -101,7 +101,7 @@ const ServiceHighlight = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 
               size="lg" 
-              className="bg-gradient-to-r from-accent to-neon text-primary px-8"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 px-8"
               asChild
             >
               <Link to="/contact">
@@ -109,7 +109,7 @@ const ServiceHighlight = () => {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            <Button variant="outline" size="lg" asChild>
+            <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground" asChild>
               <Link to="/portfolio">View Our Work</Link>
             </Button>
           </div>
