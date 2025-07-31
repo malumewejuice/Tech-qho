@@ -106,7 +106,7 @@ const ServiceHighlight = () => {
             >
               <Link to="/contact">
                 Let's Connect You
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-5 w-5 text-sky-400" />
               </Link>
             </Button>
           </div>
