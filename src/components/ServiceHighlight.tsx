@@ -101,7 +101,7 @@ const ServiceHighlight = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 
               size="lg" 
-              className="bg-primary text-primary-foreground hover:bg-primary/90 px-8"
+              className="bg-primary text-white hover:bg-primary/90 px-8"
               asChild
             >
               <Link to="/contact">
