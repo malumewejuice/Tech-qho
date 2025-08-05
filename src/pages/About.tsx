@@ -25,7 +25,7 @@ const About = () => {
 
   const team = [
     {
-      name: 'Alex Thompson',
+      name: 'Sabelo Nkomonde',
       role: 'CEO & Founder',
       bio: 'Former Google AI engineer with 10+ years in machine learning and automation.',
       avatar: 'AT'
