@@ -46,9 +46,9 @@ const About = () => {
   ];
 
   const openPositions = [
-    { title: 'Senior AI Engineer', type: 'Full-time', location: 'Remote' },
-    { title: 'React Developer', type: 'Full-time', location: 'San Francisco' },
-    { title: 'DevOps Engineer', type: 'Contract', location: 'Remote' }
+    { title: 'Senior AI Engineer', type: 'Part-time', location: 'Remote' },
+    { title: 'React Developer', type: 'Part-time', location: 'Remote' },
+    { title: 'DevOps Engineer', type: 'Part-time', location: 'Remote' }
   ];
 
   return (
