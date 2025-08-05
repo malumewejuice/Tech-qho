@@ -18,8 +18,6 @@ const Navigation = () => {
         { name: 'Web Development', href: '/services/web-development' }
       ]
     },
-    { name: 'Portfolio', href: '/portfolio' },
-    { name: 'Blog', href: '/blog' },
     { name: 'FAQ', href: '/faq' },
     { name: 'Contact', href: '/contact' }
   ];
