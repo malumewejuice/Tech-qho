@@ -1,37 +1,53 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Bot, Code, Zap, Workflow, Globe, BarChart3, Link, ArrowRight } from 'lucide-react';
-
 const ServiceHighlight = () => {
-  const services = [
-    {
-      category: 'AI Automation',
+  const services = [{
+    category: 'AI Automation',
+    icon: Bot,
+    description: 'Intelligent automation solutions that streamline your workflow and boost productivity.',
+    features: [{
+      icon: Workflow,
+      name: 'Workflow Automation',
+      description: 'Automate repetitive tasks and processes'
+    }, {
       icon: Bot,
-      description: 'Intelligent automation solutions that streamline your workflow and boost productivity.',
-      features: [
-        { icon: Workflow, name: 'Workflow Automation', description: 'Automate repetitive tasks and processes' },
-        { icon: Bot, name: 'Chatbots & AI Assistants', description: 'Smart customer service solutions' },
-        { icon: BarChart3, name: 'Predictive Analytics', description: 'Data-driven insights and forecasting' },
-        { icon: Zap, name: 'ML Integration', description: 'Custom machine learning solutions' }
-      ],
-      gradient: 'from-accent to-neon-glow'
-    },
-    {
-      category: 'Web Development',
+      name: 'Chatbots & AI Assistants',
+      description: 'Smart customer service solutions'
+    }, {
+      icon: BarChart3,
+      name: 'Predictive Analytics',
+      description: 'Data-driven insights and forecasting'
+    }, {
+      icon: Zap,
+      name: 'ML Integration',
+      description: 'Custom machine learning solutions'
+    }],
+    gradient: 'from-accent to-neon-glow'
+  }, {
+    category: 'Web Development',
+    icon: Code,
+    description: 'Modern, responsive websites and applications built with cutting-edge technology.',
+    features: [{
+      icon: Globe,
+      name: 'UI/UX Design',
+      description: 'Beautiful, user-centered design'
+    }, {
       icon: Code,
-      description: 'Modern, responsive websites and applications built with cutting-edge technology.',
-      features: [
-        { icon: Globe, name: 'UI/UX Design', description: 'Beautiful, user-centered design' },
-        { icon: Code, name: 'Custom Applications', description: 'Tailored web solutions' },
-        { icon: Link, name: 'E-commerce Solutions', description: 'Complete online store development' },
-        { icon: Zap, name: 'Performance Optimization', description: 'Fast, SEO-optimized websites' }
-      ],
-      gradient: 'from-primary to-primary-light'
-    }
-  ];
-
-  return (
-    <section className="py-24 bg-background">
+      name: 'Custom Applications',
+      description: 'Tailored web solutions'
+    }, {
+      icon: Link,
+      name: 'E-commerce Solutions',
+      description: 'Complete online store development'
+    }, {
+      icon: Zap,
+      name: 'Performance Optimization',
+      description: 'Fast, SEO-optimized websites'
+    }],
+    gradient: 'from-primary to-primary-light'
+  }];
+  return <section className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -46,8 +62,7 @@ const ServiceHighlight = () => {
 
         {/* Services Grid */}
         <div className="grid lg:grid-cols-2 gap-8 mb-16">
-          {services.map((service, index) => (
-            <Card key={service.category} className="card-shadow hover:elevated-shadow transition-smooth group">
+          {services.map((service, index) => <Card key={service.category} className="card-shadow hover:elevated-shadow transition-smooth group">
               <CardHeader className="text-center pb-8">
                 <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-sky-200 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <service.icon className="w-8 h-8 text-primary" />
@@ -62,8 +77,7 @@ const ServiceHighlight = () => {
               
               <CardContent>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                  {service.features.map((feature) => (
-                    <div key={feature.name} className="flex items-start space-x-3 p-4 rounded-lg bg-muted/50 hover:bg-muted transition-smooth">
+                  {service.features.map(feature => <div key={feature.name} className="flex items-start space-x-3 p-4 rounded-lg bg-muted/50 hover:bg-muted transition-smooth">
                       <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent/20 to-neon/20 flex items-center justify-center flex-shrink-0 mt-1">
                         <feature.icon className="w-4 h-4 text-accent" />
                       </div>
@@ -71,23 +85,17 @@ const ServiceHighlight = () => {
                         <h4 className="font-semibold text-primary text-sm mb-1">{feature.name}</h4>
                         <p className="text-xs text-muted-foreground">{feature.description}</p>
                       </div>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
                 
-                <Button 
-                  variant="outline" 
-                  className="w-full border-accent text-accent hover:bg-accent hover:text-primary group"
-                  asChild
-                >
+                <Button variant="outline" className="w-full border-accent text-accent hover:bg-accent hover:text-primary group" asChild>
                   <Link to={`/services/${service.category.toLowerCase().replace(' ', '-')}`}>
                     Learn More
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </Button>
               </CardContent>
-            </Card>
-          ))}
+            </Card>)}
         </div>
 
         {/* CTA Section */}
@@ -99,21 +107,12 @@ const ServiceHighlight = () => {
             Let's discuss how our AI automation and web development services can drive your business forward.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button 
-              size="lg" 
-              className="bg-primary text-white hover:bg-primary/90 px-8"
-              asChild
-            >
-              <Link to="/contact" className="text-white">
-                Let Us Connect You
-                <ArrowRight className="ml-2 h-5 w-5 text-sky-400" />
-              </Link>
+            <Button size="lg" className="bg-primary text-white hover:bg-primary/90 px-8" asChild>
+              
             </Button>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ServiceHighlight;
