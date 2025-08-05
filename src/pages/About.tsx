@@ -27,27 +27,22 @@ const About = () => {
     {
       name: 'Sabelo Nkomonde',
       role: 'CEO & Founder',
-      bio: 'Former Google AI engineer with 10+ years in machine learning and automation.',
-      avatar: 'AT'
+      bio: '.',
+      avatar: 'SN'
     },
     {
-      name: 'Sarah Kim',
-      role: 'CTO',
-      bio: 'Full-stack architect specializing in scalable web applications and cloud infrastructure.',
-      avatar: 'SK'
+      name: 'Mawande Ntsodo',
+      role: 'Web Developer',
+      bio: '.',
+      avatar: 'MN'
     },
     {
-      name: 'David Rodriguez',
+      name: 'Shimiyeto Maswanganyi',
       role: 'Lead AI Engineer',
-      bio: 'PhD in Computer Science, expert in natural language processing and predictive analytics.',
-      avatar: 'DR'
+      
+      avatar: 'SM'
     },
-    {
-      name: 'Emily Chen',
-      role: 'Head of Design',
-      bio: 'Award-winning UX designer with a passion for creating intuitive, beautiful interfaces.',
-      avatar: 'EC'
-    }
+
   ];
 
   const openPositions = [
