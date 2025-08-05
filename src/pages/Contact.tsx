@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -9,6 +10,15 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
 
 const Contact = () => {
+  useEffect(() => {
+    const handleClick = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
+  }, []);
+
   return (
     <div className="min-h-screen">
       <Navigation />

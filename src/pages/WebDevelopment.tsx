@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -6,6 +7,15 @@ import { Code, Globe, Zap, Smartphone, Search, ShoppingCart, Palette, Monitor } 
 import { Link } from 'react-router-dom';
 
 const WebDevelopment = () => {
+  useEffect(() => {
+    const handleClick = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
+  }, []);
+
   const features = [
     {
       icon: Globe,

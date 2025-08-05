@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -5,6 +6,15 @@ import { Button } from '@/components/ui/button';
 import { Users, Target, Lightbulb, Award, ArrowRight } from 'lucide-react';
 
 const About = () => {
+  useEffect(() => {
+    const handleClick = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
+  }, []);
+
   const values = [
     {
       icon: Target,
