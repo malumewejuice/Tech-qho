@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Bot, Code, Zap, Workflow, Globe, BarChart3, Link, ArrowRight } from 'lucide-react';
+import { Bot, Code, Zap, Workflow, Globe, BarChart3, Link as LinkIcon, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 const ServiceHighlight = () => {
   const services = [{
     category: 'AI Automation',
@@ -37,7 +38,7 @@ const ServiceHighlight = () => {
       name: 'Custom Applications',
       description: 'Tailored web solutions'
     }, {
-      icon: Link,
+      icon: LinkIcon,
       name: 'E-commerce Solutions',
       description: 'Complete online store development'
     }, {
@@ -108,7 +109,7 @@ const ServiceHighlight = () => {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" className="bg-primary text-white hover:bg-primary/90 px-8" asChild>
-              
+              <Link to="/contact">Let Us Connect You</Link>
             </Button>
           </div>
         </div>
