@@ -8,19 +8,18 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
-
 const Contact = () => {
   useEffect(() => {
     const handleClick = () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
     };
-
     document.addEventListener("click", handleClick);
     return () => document.removeEventListener("click", handleClick);
   }, []);
-
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Navigation />
       
       <main className="pt-16">
@@ -86,28 +85,11 @@ const Contact = () => {
                     </Select>
                   </div>
                   
-                  <div>
-                    <Label htmlFor="budget">Project Budget</Label>
-                    <Select>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select budget range" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="under-1k">Under R1000</SelectItem>
-                        <SelectItem value="10k-25k">R10000 - R25,000</SelectItem>
-                        <SelectItem value="25k-50k">R25,000 - R50,000</SelectItem>
-                        <SelectItem value="over-100k">Over R100,000</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
+                  
                   
                   <div>
                     <Label htmlFor="message">Project Details</Label>
-                    <Textarea 
-                      id="message" 
-                      placeholder="Tell us about your project, goals, and any specific requirements..."
-                      rows={4}
-                    />
+                    <Textarea id="message" placeholder="Tell us about your project, goals, and any specific requirements..." rows={4} />
                   </div>
                   
                   <Button className="w-full bg-gradient-to-r from-accent to-neon text-primary">
@@ -215,8 +197,6 @@ const Contact = () => {
       </main>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Contact;
