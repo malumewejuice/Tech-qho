@@ -7,7 +7,7 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
-  const navigationItems = [
+  const menuItems = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { 
@@ -18,6 +18,7 @@ const Navigation = () => {
         { name: 'Web Development', href: '/services/web-development' }
       ]
     },
+    { name: 'Pricing', href: '/pricing' },
     { name: 'FAQ', href: '/faq' },
     { name: 'Contact', href: '/contact' }
   ];
@@ -43,7 +44,7 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navigationItems.map((item) => (
+            {menuItems.map((item) => (
               <div key={item.name} className="relative group">
                 <Link
                   to={item.href}
@@ -101,7 +102,7 @@ const Navigation = () => {
         {isOpen && (
           <div className="md:hidden py-4 border-t border-border">
             <div className="space-y-2">
-              {navigationItems.map((item) => (
+              {menuItems.map((item) => (
                 <div key={item.name}>
                   <Link
                     to={item.href}
