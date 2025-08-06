@@ -29,7 +29,7 @@ const App = () => (
           <Route path="/services/ai-automation" element={<AIAutomation />} />
           <Route path="/services/web-development" element={<WebDevelopment />} />
           <Route path="/pricing" element={<Pricing />} />
-          <Route path="/faq" element={<NotFound />} />
+          
           <Route path="/client-login" element={<NotFound />} />
           <Route path="/privacy" element={<NotFound />} />
           <Route path="/terms" element={<NotFound />} />
