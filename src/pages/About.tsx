@@ -49,10 +49,15 @@ const About = () => {
     {
       name: 'Shimiyeto Maswanganyi',
       role: 'Lead AI Engineer',
-      
+      bio: '.',
       avatar: 'SM'
     },
-
+    {
+      name: 'Cebo Maphanga',
+      role: 'Software Engineer',
+      bio: '.',
+      avatar: 'CM'
+    }
   ];
 
   const openPositions = [
