@@ -36,7 +36,7 @@ const About = () => {
   const team = [
     {
       name: 'Sabelo Nkomonde',
-      role: 'CEO & Founder',
+      role: 'Head of Marketing and sales ',
       bio: '.',
       avatar: 'SN'
     },
