@@ -148,34 +148,24 @@ const About = () => {
               </p>
             </div>
 
-            <div className="max-w-4xl mx-auto">
-              <div className="space-y-4 mb-12">
-                {openPositions.map((position, index) => (
-                  <Card key={index} className="card-shadow hover:elevated-shadow transition-smooth">
-                    <CardContent className="p-6">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h3 className="text-lg font-semibold text-primary mb-1">{position.title}</h3>
-                          <p className="text-muted-foreground text-sm">{position.type} • {position.location}</p>
-                        </div>
-                        <Button variant="outline" className="border-accent text-accent hover:bg-accent hover:text-primary">
-                          Apply Now
-                          <ArrowRight className="ml-2 h-4 w-4" />
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-
-              <div className="text-center">
-                <p className="text-muted-foreground mb-6">
-                  Don't see the perfect role? We'd still love to hear from you.
-                </p>
-                <Button className="bg-gradient-to-r from-accent to-neon text-primary">
-                  Send Us Your Resume
-                </Button>
-              </div>
+            <div className="max-w-4xl mx-auto text-center">
+              <Card className="card-shadow p-12">
+                <CardContent>
+                  <Users className="w-16 h-16 mx-auto mb-6 text-accent" />
+                  <h3 className="text-2xl font-bold text-primary mb-4">
+                    We're Not Hiring at the Moment
+                  </h3>
+                  <p className="text-muted-foreground text-lg mb-6">
+                    While we're not actively recruiting, we're always interested in connecting with talented individuals who share our passion for innovation.
+                  </p>
+                  <p className="text-muted-foreground mb-8">
+                    Feel free to reach out and introduce yourself - we'd love to stay in touch for future opportunities.
+                  </p>
+                  <Button className="bg-gradient-to-r from-accent to-neon text-primary">
+                    Get in Touch
+                  </Button>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
