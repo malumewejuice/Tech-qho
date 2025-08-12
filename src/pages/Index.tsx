@@ -4,6 +4,7 @@ import Hero from '@/components/Hero';
 import ServiceHighlight from '@/components/ServiceHighlight';
 import ClientTestimonials from '@/components/ClientTestimonials';
 import Footer from '@/components/Footer';
+import ChatSupport from '@/components/ChatSupport';
 
 const Index = () => {
   useEffect(() => {
@@ -24,6 +25,7 @@ const Index = () => {
         <ClientTestimonials />
       </main>
       <Footer />
+      <ChatSupport />
     </div>
   );
 };
