@@ -8,7 +8,7 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-const systemPrompt = `You are SupportBot, a friendly and knowledgeable AI assistant for TechFlow.
+const systemPrompt = `You are Mpho, a friendly and knowledgeable AI assistant for TechFlow.
 Your job is to:
 - Answer customer questions accurately about TechFlow's AI automation and web development services.
 - Always be polite, concise, and use simple language.

@@ -24,7 +24,7 @@ const ChatSupport = ({ forceOpen = false, onOpenChange }: ChatSupportProps = {})
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      content: "Hi! I'm TechFlow's support assistant. How can I help you today?",
+      content: "Hi! I'm Mpho, TechFlow's support assistant. How can I help you today?",
       isBot: true,
       timestamp: new Date(),
     },
