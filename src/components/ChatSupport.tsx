@@ -14,8 +14,13 @@ interface Message {
   timestamp: Date;
 }
 
-const ChatSupport = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface ChatSupportProps {
+  forceOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
+}
+
+const ChatSupport = ({ forceOpen = false, onOpenChange }: ChatSupportProps = {}) => {
+  const [isOpen, setIsOpen] = useState(forceOpen);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -36,6 +41,17 @@ const ChatSupport = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  useEffect(() => {
+    if (forceOpen !== isOpen) {
+      setIsOpen(forceOpen);
+    }
+  }, [forceOpen]);
+
+  const handleOpenChange = (open: boolean) => {
+    setIsOpen(open);
+    onOpenChange?.(open);
+  };
 
   const sendMessage = async (content: string) => {
     if (!content.trim() || isLoading) return;
@@ -96,7 +112,7 @@ const ChatSupport = () => {
       {/* Floating Chat Button */}
       {!isOpen && (
         <Button
-          onClick={() => setIsOpen(true)}
+          onClick={() => handleOpenChange(true)}
           className="fixed bottom-6 right-6 w-14 h-14 rounded-full shadow-lg z-50 bg-primary hover:bg-primary/90"
           size="icon"
         >
@@ -114,7 +130,7 @@ const ChatSupport = () => {
               <h3 className="font-semibold">TechFlow Support</h3>
             </div>
             <Button
-              onClick={() => setIsOpen(false)}
+              onClick={() => handleOpenChange(false)}
               variant="ghost"
               size="icon"
               className="text-primary-foreground hover:bg-primary-foreground/20"

@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 
 const FAQ = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [showChatHelp, setShowChatHelp] = useState(false);
+  const [chatOpen, setChatOpen] = useState(false);
 
   useEffect(() => {
     const handleClick = () => {
@@ -140,7 +140,7 @@ const FAQ = () => {
                     </div>
                   </div>
                   <Button
-                    onClick={() => setShowChatHelp(true)}
+                    onClick={() => setChatOpen(true)}
                     className="bg-primary hover:bg-primary/90"
                   >
                     Start Chat
@@ -208,7 +208,7 @@ const FAQ = () => {
               <Button
                 size="lg"
                 variant="outline"
-                onClick={() => setShowChatHelp(true)}
+                onClick={() => setChatOpen(true)}
               >
                 Chat with AI Assistant
               </Button>
@@ -219,7 +219,7 @@ const FAQ = () => {
       <Footer />
       
       {/* Integrated Chat Support */}
-      <ChatSupport />
+      <ChatSupport forceOpen={chatOpen} onOpenChange={setChatOpen} />
     </div>
   );
 };
