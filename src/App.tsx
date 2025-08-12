@@ -11,6 +11,7 @@ import Services from "./pages/Services";
 import AIAutomation from "./pages/AIAutomation";
 import WebDevelopment from "./pages/WebDevelopment";
 import Pricing from "./pages/Pricing";
+import FAQ from "./pages/FAQ";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/services/ai-automation" element={<AIAutomation />} />
           <Route path="/services/web-development" element={<WebDevelopment />} />
           <Route path="/pricing" element={<Pricing />} />
+          <Route path="/faq" element={<FAQ />} />
           
           <Route path="/client-login" element={<NotFound />} />
           <Route path="/privacy" element={<NotFound />} />
