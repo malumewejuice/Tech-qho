@@ -32,16 +32,7 @@ const Contact = () => {
     message: ''
   });
 
-  useEffect(() => {
-    const handleClick = () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    };
-    document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
-  }, []);
+  // Removed the problematic scroll-to-top on click behavior
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
