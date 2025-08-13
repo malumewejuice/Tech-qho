@@ -1,4 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
+// Declare vapi-widget as a custom element
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'vapi-widget': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        'assistant-id'?: string;
+        'public-key'?: string;
+      };
+    }
+  }
+}
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ChatSupport from '@/components/ChatSupport';
@@ -10,6 +22,16 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
 const Contact = () => {
+  const [showVapiWidget, setShowVapiWidget] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    company: '',
+    service: '',
+    message: ''
+  });
+
   useEffect(() => {
     const handleClick = () => {
       window.scrollTo({
@@ -20,6 +42,38 @@ const Contact = () => {
     document.addEventListener("click", handleClick);
     return () => document.removeEventListener("click", handleClick);
   }, []);
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Basic validation
+    if (formData.firstName && formData.lastName && formData.email && formData.message) {
+      setShowVapiWidget(true);
+    }
+  };
+
+  useEffect(() => {
+    if (showVapiWidget) {
+      // Create and append the vapi-widget element dynamically
+      const widget = document.createElement('vapi-widget');
+      widget.setAttribute('assistant-id', '90ab676f-af48-41df-848a-c6c039b26cd1');
+      widget.setAttribute('public-key', 'bda40335-5f87-4a5b-9833-ad7b178e0162');
+      widget.style.position = 'fixed';
+      widget.style.zIndex = '50';
+      document.body.appendChild(widget);
+
+      return () => {
+        // Cleanup - remove the widget when component unmounts or state changes
+        const existingWidget = document.querySelector('vapi-widget');
+        if (existingWidget) {
+          existingWidget.remove();
+        }
+      };
+    }
+  }, [showVapiWidget]);
   return <div className="min-h-screen">
       <Navigation />
       
@@ -50,53 +104,86 @@ const Contact = () => {
                   </p>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="firstName">First Name</Label>
-                      <Input id="firstName" placeholder="John" />
+                  <form onSubmit={handleSubmit}>
+                    <div className="space-y-6">
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <Label htmlFor="firstName">First Name</Label>
+                          <Input 
+                            id="firstName" 
+                            placeholder="John" 
+                            value={formData.firstName}
+                            onChange={(e) => handleInputChange('firstName', e.target.value)}
+                            required
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="lastName">Last Name</Label>
+                          <Input 
+                            id="lastName" 
+                            placeholder="Doe" 
+                            value={formData.lastName}
+                            onChange={(e) => handleInputChange('lastName', e.target.value)}
+                            required
+                          />
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <Label htmlFor="email">Email</Label>
+                        <Input 
+                          id="email" 
+                          type="email" 
+                          placeholder="john@company.com" 
+                          value={formData.email}
+                          onChange={(e) => handleInputChange('email', e.target.value)}
+                          required
+                        />
+                      </div>
+                      
+                      <div>
+                        <Label htmlFor="company">Company</Label>
+                        <Input 
+                          id="company" 
+                          placeholder="Your Company" 
+                          value={formData.company}
+                          onChange={(e) => handleInputChange('company', e.target.value)}
+                        />
+                      </div>
+                      
+                      <div>
+                        <Label htmlFor="service">Service Interested In</Label>
+                        <Select value={formData.service} onValueChange={(value) => handleInputChange('service', value)}>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a service" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="ai-automation">AI Automation</SelectItem>
+                            <SelectItem value="web-development">Web Development</SelectItem>
+                            <SelectItem value="both">Both Services</SelectItem>
+                            <SelectItem value="consultation">Consultation</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      
+                      <div>
+                        <Label htmlFor="message">Project Details</Label>
+                        <Textarea 
+                          id="message" 
+                          placeholder="Tell us about your project, goals, and any specific requirements..." 
+                          rows={4} 
+                          value={formData.message}
+                          onChange={(e) => handleInputChange('message', e.target.value)}
+                          required
+                        />
+                      </div>
+                      
+                      <Button type="submit" className="w-full bg-gradient-to-r from-accent to-neon text-primary">
+                        <Send className="mr-2 h-4 w-4" />
+                        Send Message
+                      </Button>
                     </div>
-                    <div>
-                      <Label htmlFor="lastName">Last Name</Label>
-                      <Input id="lastName" placeholder="Doe" />
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="john@company.com" />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="company">Company</Label>
-                    <Input id="company" placeholder="Your Company" />
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="service">Service Interested In</Label>
-                    <Select>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a service" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="ai-automation">AI Automation</SelectItem>
-                        <SelectItem value="web-development">Web Development</SelectItem>
-                        <SelectItem value="both">Both Services</SelectItem>
-                        <SelectItem value="consultation">Consultation</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  
-                  
-                  
-                  <div>
-                    <Label htmlFor="message">Project Details</Label>
-                    <Textarea id="message" placeholder="Tell us about your project, goals, and any specific requirements..." rows={4} />
-                  </div>
-                  
-                  <Button className="w-full bg-gradient-to-r from-accent to-neon text-primary">
-                    <Send className="mr-2 h-4 w-4" />
-                    Send Message
-                  </Button>
+                  </form>
                 </CardContent>
               </Card>
 
@@ -199,6 +286,14 @@ const Contact = () => {
 
       <Footer />
       <ChatSupport />
+      
+      {/* Overlay for Vapi Widget */}
+      {showVapiWidget && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-40" 
+          onClick={() => setShowVapiWidget(false)}
+        />
+      )}
     </div>;
 };
 export default Contact;
