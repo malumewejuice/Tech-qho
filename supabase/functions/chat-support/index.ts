@@ -47,7 +47,7 @@ serve(async (req) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-4.1-2025-04-14',
+        model: 'gpt-4o-mini',
         messages: messages,
         max_tokens: 500,
         temperature: 0.7,
@@ -55,6 +55,17 @@ serve(async (req) => {
     });
 
     const data = await response.json();
+    
+    if (!response.ok) {
+      console.error('OpenAI API error:', data);
+      throw new Error(`OpenAI API error: ${data.error?.message || 'Unknown error'}`);
+    }
+    
+    if (!data.choices || !data.choices[0]) {
+      console.error('Invalid OpenAI response:', data);
+      throw new Error('Invalid response from OpenAI API');
+    }
+    
     const botResponse = data.choices[0].message.content;
 
     return new Response(JSON.stringify({ response: botResponse }), {
