@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ChatSupport from '@/components/ChatSupport';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -401,6 +402,7 @@ const Pricing = () => {
       </main>
       
       <Footer />
+      <ChatSupport />
     </div>
   );
 };

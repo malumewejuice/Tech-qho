@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ChatSupport from '@/components/ChatSupport';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -197,6 +198,7 @@ const Contact = () => {
       </main>
 
       <Footer />
+      <ChatSupport />
     </div>;
 };
 export default Contact;

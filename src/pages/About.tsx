@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ChatSupport from '@/components/ChatSupport';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Users, Target, Lightbulb, Award, ArrowRight } from 'lucide-react';
@@ -172,6 +173,7 @@ const About = () => {
       </main>
 
       <Footer />
+      <ChatSupport />
     </div>
   );
 };

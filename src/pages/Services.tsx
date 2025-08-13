@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ChatSupport from '@/components/ChatSupport';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Bot, Code, Workflow, Globe, BarChart3, Zap, ArrowRight } from 'lucide-react';
@@ -171,6 +172,7 @@ const Services = () => {
       </main>
       
       <Footer />
+      <ChatSupport />
     </div>
   );
 };

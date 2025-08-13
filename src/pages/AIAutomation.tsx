@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ChatSupport from '@/components/ChatSupport';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Bot, Workflow, BarChart3, Zap, Clock, TrendingUp, Shield, Users } from 'lucide-react';
@@ -163,6 +164,7 @@ const AIAutomation = () => {
       </main>
       
       <Footer />
+      <ChatSupport />
     </div>
   );
 };

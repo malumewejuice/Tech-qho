@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ChatSupport from '@/components/ChatSupport';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Code, Globe, Zap, Smartphone, Search, ShoppingCart, Palette, Monitor } from 'lucide-react';
@@ -227,6 +228,7 @@ const WebDevelopment = () => {
       </main>
       
       <Footer />
+      <ChatSupport />
     </div>
   );
 };
