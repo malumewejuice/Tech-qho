@@ -9,14 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Check, Zap, Globe, Bot, Phone, MessageCircle, ShoppingCart } from 'lucide-react';
 
 const Pricing = () => {
-  useEffect(() => {
-    const handleClick = () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-
-    document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
-  }, []);
+  // Removed problematic scroll-to-top behavior
 
   const aiPlans = [
     {

@@ -8,14 +8,7 @@ import { Bot, Code, Workflow, Globe, BarChart3, Zap, ArrowRight } from 'lucide-r
 import { Link } from 'react-router-dom';
 
 const Services = () => {
-  useEffect(() => {
-    const handleClick = () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-
-    document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
-  }, []);
+  // Removed problematic scroll-to-top behavior
 
   const services = [
     {

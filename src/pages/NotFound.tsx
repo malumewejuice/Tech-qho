@@ -11,14 +11,7 @@ const NotFound = () => {
     );
   }, [location.pathname]);
 
-  useEffect(() => {
-    const handleClick = () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-
-    document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
-  }, []);
+  // Removed problematic scroll-to-top behavior
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">

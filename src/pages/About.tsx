@@ -7,14 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Users, Target, Lightbulb, Award, ArrowRight } from 'lucide-react';
 
 const About = () => {
-  useEffect(() => {
-    const handleClick = () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-
-    document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
-  }, []);
+  // Removed problematic scroll-to-top behavior
 
   const values = [
     {

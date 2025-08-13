@@ -8,14 +8,7 @@ import { Bot, Workflow, BarChart3, Zap, Clock, TrendingUp, Shield, Users } from 
 import { Link } from 'react-router-dom';
 
 const AIAutomation = () => {
-  useEffect(() => {
-    const handleClick = () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-
-    document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
-  }, []);
+  // Removed problematic scroll-to-top behavior
 
   const features = [
     {

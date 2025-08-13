@@ -7,14 +7,7 @@ import Footer from '@/components/Footer';
 import ChatSupport from '@/components/ChatSupport';
 
 const Index = () => {
-  useEffect(() => {
-    const handleClick = () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-
-    document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
-  }, []);
+  // Removed problematic scroll-to-top behavior
 
   return (
     <div className="min-h-screen">

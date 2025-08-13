@@ -12,14 +12,7 @@ const FAQ = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [chatOpen, setChatOpen] = useState(false);
 
-  useEffect(() => {
-    const handleClick = () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-
-    document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
-  }, []);
+  // Removed problematic scroll-to-top behavior
 
   const faqs = [
     {
