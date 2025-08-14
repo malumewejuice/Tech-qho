@@ -49,9 +49,16 @@ const Contact = () => {
 
   useEffect(() => {
     if (showVapiWidget) {
+      console.log('Attempting to load Vapi widget...');
+      let retryCount = 0;
+      const maxRetries = 50; // 5 seconds max
+      
       // Wait for Vapi script to load before creating widget
       const checkVapiLoaded = () => {
+        console.log(`Vapi check attempt ${retryCount + 1}`);
+        
         if (typeof customElements !== 'undefined' && customElements.get('vapi-widget')) {
+          console.log('Vapi widget found, creating element...');
           // Create and append the vapi-widget element dynamically
           const widget = document.createElement('vapi-widget');
           widget.setAttribute('assistant-id', '90ab676f-af48-41df-848a-c6c039b26cd1');
@@ -64,12 +71,22 @@ const Contact = () => {
           setTimeout(() => {
             const vapiWidget = document.querySelector('vapi-widget') as any;
             if (vapiWidget && vapiWidget.start) {
+              console.log('Starting Vapi widget...');
               vapiWidget.start();
+            } else {
+              console.error('Vapi widget start method not available');
+              setShowVapiWidget(false); // Close overlay if widget fails
             }
           }, 100);
         } else {
-          // Retry after a short delay if script not loaded yet
-          setTimeout(checkVapiLoaded, 100);
+          retryCount++;
+          if (retryCount < maxRetries) {
+            // Retry after a short delay if script not loaded yet
+            setTimeout(checkVapiLoaded, 100);
+          } else {
+            console.error('Vapi widget failed to load after maximum retries');
+            setShowVapiWidget(false); // Close overlay after timeout
+          }
         }
       };
       
