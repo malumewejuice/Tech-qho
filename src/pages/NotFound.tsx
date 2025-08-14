@@ -11,7 +11,9 @@ const NotFound = () => {
     );
   }, [location.pathname]);
 
-  // Removed problematic scroll-to-top behavior
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">

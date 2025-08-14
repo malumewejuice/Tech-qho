@@ -8,7 +8,9 @@ import { Bot, Code, Workflow, Globe, BarChart3, Zap, ArrowRight } from 'lucide-r
 import { Link } from 'react-router-dom';
 
 const Services = () => {
-  // Removed problematic scroll-to-top behavior
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const services = [
     {

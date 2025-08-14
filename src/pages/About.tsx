@@ -7,7 +7,9 @@ import { Button } from '@/components/ui/button';
 import { Users, Target, Lightbulb, Award, ArrowRight } from 'lucide-react';
 
 const About = () => {
-  // Removed problematic scroll-to-top behavior
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const values = [
     {

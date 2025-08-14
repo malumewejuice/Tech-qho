@@ -12,7 +12,9 @@ const FAQ = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [chatOpen, setChatOpen] = useState(false);
 
-  // Removed problematic scroll-to-top behavior
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const faqs = [
     {

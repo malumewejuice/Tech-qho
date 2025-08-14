@@ -8,7 +8,9 @@ import { Bot, Workflow, BarChart3, Zap, Clock, TrendingUp, Shield, Users } from 
 import { Link } from 'react-router-dom';
 
 const AIAutomation = () => {
-  // Removed problematic scroll-to-top behavior
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const features = [
     {

@@ -7,7 +7,9 @@ import Footer from '@/components/Footer';
 import ChatSupport from '@/components/ChatSupport';
 
 const Index = () => {
-  // Removed problematic scroll-to-top behavior
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="min-h-screen">

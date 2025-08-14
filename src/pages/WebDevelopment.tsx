@@ -8,7 +8,9 @@ import { Code, Globe, Zap, Smartphone, Search, ShoppingCart, Palette, Monitor } 
 import { Link } from 'react-router-dom';
 
 const WebDevelopment = () => {
-  // Removed problematic scroll-to-top behavior
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const features = [
     {
