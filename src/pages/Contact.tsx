@@ -138,7 +138,7 @@ const Contact = () => {
                         <Input 
                           id="phone" 
                           type="tel" 
-                          placeholder="+1 (555) 123-4567" 
+                          placeholder="+27 78 706 3495" 
                           value={formData.phone}
                           onChange={(e) => handleInputChange('phone', e.target.value)}
                         />
