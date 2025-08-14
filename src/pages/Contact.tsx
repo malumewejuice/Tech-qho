@@ -27,6 +27,7 @@ const Contact = () => {
     firstName: '',
     lastName: '',
     email: '',
+    phone: '',
     company: '',
     service: '',
     message: ''
@@ -129,6 +130,17 @@ const Contact = () => {
                           value={formData.email}
                           onChange={(e) => handleInputChange('email', e.target.value)}
                           required
+                        />
+                      </div>
+                      
+                      <div>
+                        <Label htmlFor="phone">Phone Number</Label>
+                        <Input 
+                          id="phone" 
+                          type="tel" 
+                          placeholder="+1 (555) 123-4567" 
+                          value={formData.phone}
+                          onChange={(e) => handleInputChange('phone', e.target.value)}
                         />
                       </div>
                       
