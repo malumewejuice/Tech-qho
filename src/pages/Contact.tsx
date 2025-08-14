@@ -1,4 +1,16 @@
 import { useState } from 'react';
+
+// Declare Voiceflow types
+declare global {
+  interface Window {
+    voiceflow: {
+      chat: {
+        open: () => void;
+        load: (config: any) => void;
+      };
+    };
+  }
+}
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ChatSupport from '@/components/ChatSupport';
@@ -30,6 +42,12 @@ const Contact = () => {
     if (formData.firstName && formData.lastName && formData.email && formData.message) {
       // Form submitted successfully
       console.log('Form submitted:', formData);
+      
+      // Trigger Voiceflow chat
+      if (window.voiceflow?.chat?.open) {
+        window.voiceflow.chat.open();
+      }
+      
       // You can add form submission logic here (e.g., send to API)
     }
   };
