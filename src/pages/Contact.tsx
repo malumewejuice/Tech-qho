@@ -49,13 +49,31 @@ const Contact = () => {
 
   useEffect(() => {
     if (showVapiWidget) {
-      // Create and append the vapi-widget element dynamically
-      const widget = document.createElement('vapi-widget');
-      widget.setAttribute('assistant-id', '90ab676f-af48-41df-848a-c6c039b26cd1');
-      widget.setAttribute('public-key', 'bda40335-5f87-4a5b-9833-ad7b178e0162');
-      widget.style.position = 'fixed';
-      widget.style.zIndex = '50';
-      document.body.appendChild(widget);
+      // Wait for Vapi script to load before creating widget
+      const checkVapiLoaded = () => {
+        if (typeof customElements !== 'undefined' && customElements.get('vapi-widget')) {
+          // Create and append the vapi-widget element dynamically
+          const widget = document.createElement('vapi-widget');
+          widget.setAttribute('assistant-id', '90ab676f-af48-41df-848a-c6c039b26cd1');
+          widget.setAttribute('public-key', 'bda40335-5f87-4a5b-9833-ad7b178e0162');
+          widget.style.position = 'fixed';
+          widget.style.zIndex = '50';
+          document.body.appendChild(widget);
+          
+          // Auto-start the widget
+          setTimeout(() => {
+            const vapiWidget = document.querySelector('vapi-widget') as any;
+            if (vapiWidget && vapiWidget.start) {
+              vapiWidget.start();
+            }
+          }, 100);
+        } else {
+          // Retry after a short delay if script not loaded yet
+          setTimeout(checkVapiLoaded, 100);
+        }
+      };
+      
+      checkVapiLoaded();
 
       return () => {
         // Cleanup - remove the widget when component unmounts or state changes
