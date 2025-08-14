@@ -1,16 +1,4 @@
-import { useEffect, useState } from 'react';
-
-// Declare vapi-widget as a custom element
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'vapi-widget': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        'assistant-id'?: string;
-        'public-key'?: string;
-      };
-    }
-  }
-}
+import { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ChatSupport from '@/components/ChatSupport';
@@ -22,7 +10,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
 const Contact = () => {
-  const [showVapiWidget, setShowVapiWidget] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -33,8 +20,6 @@ const Contact = () => {
     message: ''
   });
 
-  // Removed the problematic scroll-to-top on click behavior
-
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
@@ -43,64 +28,11 @@ const Contact = () => {
     e.preventDefault();
     // Basic validation
     if (formData.firstName && formData.lastName && formData.email && formData.message) {
-      setShowVapiWidget(true);
+      // Form submitted successfully
+      console.log('Form submitted:', formData);
+      // You can add form submission logic here (e.g., send to API)
     }
   };
-
-  useEffect(() => {
-    if (showVapiWidget) {
-      console.log('Attempting to load Vapi widget...');
-      let retryCount = 0;
-      const maxRetries = 50; // 5 seconds max
-      
-      // Wait for Vapi script to load before creating widget
-      const checkVapiLoaded = () => {
-        console.log(`Vapi check attempt ${retryCount + 1}`);
-        
-        if (typeof customElements !== 'undefined' && customElements.get('vapi-widget')) {
-          console.log('Vapi widget found, creating element...');
-          // Create and append the vapi-widget element dynamically
-          const widget = document.createElement('vapi-widget');
-          widget.setAttribute('assistant-id', '90ab676f-af48-41df-848a-c6c039b26cd1');
-          widget.setAttribute('public-key', 'bda40335-5f87-4a5b-9833-ad7b178e0162');
-          widget.style.position = 'fixed';
-          widget.style.zIndex = '50';
-          document.body.appendChild(widget);
-          
-          // Auto-start the widget
-          setTimeout(() => {
-            const vapiWidget = document.querySelector('vapi-widget') as any;
-            if (vapiWidget && vapiWidget.start) {
-              console.log('Starting Vapi widget...');
-              vapiWidget.start();
-            } else {
-              console.error('Vapi widget start method not available');
-              setShowVapiWidget(false); // Close overlay if widget fails
-            }
-          }, 100);
-        } else {
-          retryCount++;
-          if (retryCount < maxRetries) {
-            // Retry after a short delay if script not loaded yet
-            setTimeout(checkVapiLoaded, 100);
-          } else {
-            console.error('Vapi widget failed to load after maximum retries');
-            setShowVapiWidget(false); // Close overlay after timeout
-          }
-        }
-      };
-      
-      checkVapiLoaded();
-
-      return () => {
-        // Cleanup - remove the widget when component unmounts or state changes
-        const existingWidget = document.querySelector('vapi-widget');
-        if (existingWidget) {
-          existingWidget.remove();
-        }
-      };
-    }
-  }, [showVapiWidget]);
   return <div className="min-h-screen">
       <Navigation />
       
@@ -324,14 +256,6 @@ const Contact = () => {
 
       <Footer />
       <ChatSupport />
-      
-      {/* Overlay for Vapi Widget */}
-      {showVapiWidget && (
-        <div 
-          className="fixed inset-0 bg-black/50 z-40" 
-          onClick={() => setShowVapiWidget(false)}
-        />
-      )}
     </div>;
 };
 export default Contact;
