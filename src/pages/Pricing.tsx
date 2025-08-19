@@ -21,7 +21,7 @@ const Pricing = () => {
       description: 'Perfect for small businesses getting started with AI',
       features: [
         '1 AI chatbot (website or WhatsApp)',
-        'Up to 100 conversations',
+        'Up to 250 conversations',
         'Basic FAQs / lead capture',
         'Monthly performance report'
       ],
@@ -35,7 +35,7 @@ const Pricing = () => {
       description: 'Enhanced automation for growing businesses',
       features: [
         '2 AI agents (chatbot + WhatsApp or email)',
-        'Up to 250 conversations',
+        'Up to 450 conversations',
         'Workflow automation (bookings, reminders)',
         'Integration with Google Sheets, Calendly, etc.'
       ],
@@ -44,7 +44,7 @@ const Pricing = () => {
     },
     {
       name: 'Pro',
-      price: 'R1,999',
+      price: 'R2,999',
       period: '/month',
       description: 'Complete AI solution for enterprise needs',
       features: [
@@ -90,7 +90,7 @@ const Pricing = () => {
     },
     {
       name: 'E-Commerce/Advanced',
-      price: 'R1,199',
+      price: 'R1,499',
       period: '/month',
       description: 'Full-featured online store or booking system',
       features: [
@@ -112,12 +112,12 @@ const Pricing = () => {
     },
     {
       name: 'AI Voice Agent (Call Center / IVR)',
-      price: '+R499–R999/month',
+      price: '+R799–R2999/month',
       icon: Phone
     },
     {
       name: 'Domain + Business Email Setup',
-      price: 'R150–R300/month',
+      price: 'R150–R400/month',
       icon: Globe
     },
     {
@@ -127,7 +127,7 @@ const Pricing = () => {
     },
     {
       name: 'Social Media Automation',
-      price: 'R500–R1,000/month',
+      price: 'R500–R1,200/month',
       icon: Zap
     }
   ];
