@@ -35,7 +35,7 @@ const Pricing = () => {
       description: 'Enhanced automation for growing businesses',
       features: [
         '2 AI agents (chatbot + WhatsApp or email)',
-        'Up to 300 conversations',
+        'Up to 250 conversations',
         'Workflow automation (bookings, reminders)',
         'Integration with Google Sheets, Calendly, etc.'
       ],
