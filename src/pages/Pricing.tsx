@@ -1,5 +1,6 @@
 
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ChatSupport from '@/components/ChatSupport';
@@ -384,8 +385,8 @@ const Pricing = () => {
                 Choose the plan that fits your needs and watch your business grow.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button size="lg" className="bg-gradient-to-r from-accent to-neon text-primary px-8">
-                  Start Free Consultation
+                <Button size="lg" className="bg-gradient-to-r from-accent to-neon text-primary px-8" asChild>
+                  <Link to="/contact">Start Free Consultation</Link>
                 </Button>
                 <Button variant="outline" size="lg">
                   Contact Sales
