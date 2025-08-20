@@ -48,7 +48,7 @@ const Footer = () => {
                 <div className="w-10 h-10 bg-gradient-to-br from-accent to-neon rounded-lg flex items-center justify-center">
                   <span className="text-primary font-bold text-xl">AI</span>
                 </div>
-                <span className="text-2xl font-bold">TechFlow</span>
+                <span className="text-2xl font-bold">Tech Qho</span>
               </Link>
               <p className="text-primary-foreground/80 mb-6 max-w-md">
                 Leading AI automation and web development company. We transform businesses with 
@@ -112,7 +112,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
             {/* Copyright */}
             <div className="text-primary-foreground/60 text-sm">
-              © 2024 TechFlow. All rights reserved.
+              © 2024 Tech Qho. All rights reserved.
             </div>
 
             {/* Legal Links */}

@@ -5,7 +5,7 @@ const ClientTestimonials = () => {
     name: 'Mandla Zulu',
     position: 'CEO, TechStart Inc.',
     company: 'TechStart',
-    content: 'TechFlow transformed our entire workflow with their AI automation. We\'ve seen a 60% increase in productivity and our team can now focus on what really matters.',
+    content: 'Tech Qho transformed our entire workflow with their AI automation. We\'ve seen a 60% increase in productivity and our team can now focus on what really matters.',
     rating: 5,
     avatar: 'MZ'
   }, {
