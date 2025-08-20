@@ -38,7 +38,7 @@ const Navigation = () => {
             <div className="w-8 h-8 bg-gradient-to-br from-accent to-neon rounded-lg flex items-center justify-center">
               <span className="text-primary font-bold text-lg">AI</span>
             </div>
-            <span className="text-xl font-bold text-primary">Tech Qho</span>
+            <span className="text-xl font-bold text-primary">Tech Q</span>
           </Link>
 
           {/* Desktop Navigation */}

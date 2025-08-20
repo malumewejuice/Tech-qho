@@ -71,7 +71,7 @@ const About = () => {
         <section className="py-24 hero-gradient">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-5xl md:text-6xl font-bold text-primary-foreground mb-6">
-              About <span className="text-gradient">Tech Qho</span>
+              About <span className="text-gradient">Tech Q</span>
             </h1>
             <p className="text-xl text-primary-foreground/80 max-w-3xl mx-auto">
               We're a team of passionate technologists dedicated to transforming businesses 

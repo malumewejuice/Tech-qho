@@ -24,7 +24,7 @@ const ChatSupport = ({ forceOpen = false, onOpenChange }: ChatSupportProps = {})
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      content: "Hi! I'm Mpho, Tech Qho's support assistant. How can I help you today?",
+      content: "Hi! I'm Mpho, Tech Q's support assistant. How can I help you today?",
       isBot: true,
       timestamp: new Date(),
     },
@@ -127,7 +127,7 @@ const ChatSupport = ({ forceOpen = false, onOpenChange }: ChatSupportProps = {})
           <div className="flex items-center justify-between p-4 border-b bg-primary text-primary-foreground rounded-t-lg">
             <div className="flex items-center gap-2">
               <MessageCircle className="w-5 h-5" />
-              <h3 className="font-semibold">Tech Qho Support</h3>
+              <h3 className="font-semibold">Tech Q Support</h3>
             </div>
             <Button
               onClick={() => handleOpenChange(false)}
