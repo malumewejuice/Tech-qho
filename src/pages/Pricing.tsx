@@ -45,7 +45,7 @@ const Pricing = () => {
     },
     {
       name: 'Pro',
-      price: 'R2,999',
+      price: 'R4,999',
       period: '/month',
       description: 'Complete AI solution for enterprise needs',
       features: [
