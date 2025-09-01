@@ -8,7 +8,9 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
 const Contact = () => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -19,19 +21,75 @@ const Contact = () => {
     service: '',
     message: ''
   });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const { toast } = useToast();
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const resetForm = () => {
+    setFormData({
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      company: '',
+      service: '',
+      message: ''
+    });
+    setIsSubmitted(false);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
     // Basic validation
-    if (formData.firstName && formData.lastName && formData.email && formData.message) {
-      // Form submitted successfully
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.message) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all required fields (Name, Email, and Message).",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
       console.log('Form submitted:', formData);
       
-      // You can add form submission logic here (e.g., send to API)
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: formData
+      });
+
+      if (error) {
+        console.error('Edge function error:', error);
+        throw new Error(error.message || 'Failed to send email');
+      }
+
+      console.log('Email sent successfully:', data);
+      
+      setIsSubmitted(true);
+      
+      toast({
+        title: "Message Sent Successfully!",
+        description: "Thank you for contacting us. We'll get back to you within 24 hours.",
+        duration: 5000,
+      });
+      
+    } catch (error: any) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: "Failed to Send Message",
+        description: error.message || "There was an error sending your message. Please try again or contact us directly.",
+        variant: "destructive",
+        duration: 5000,
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
   return <div className="min-h-screen">
@@ -64,97 +122,146 @@ const Contact = () => {
                   </p>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                  <form onSubmit={handleSubmit}>
-                    <div className="space-y-6">
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <Label htmlFor="firstName">First Name</Label>
-                          <Input 
-                            id="firstName" 
-                            placeholder="John" 
-                            value={formData.firstName}
-                            onChange={(e) => handleInputChange('firstName', e.target.value)}
-                            required
-                          />
-                        </div>
-                        <div>
-                          <Label htmlFor="lastName">Last Name</Label>
-                          <Input 
-                            id="lastName" 
-                            placeholder="Doe" 
-                            value={formData.lastName}
-                            onChange={(e) => handleInputChange('lastName', e.target.value)}
-                            required
-                          />
-                        </div>
+                  {isSubmitted ? (
+                    <div className="text-center py-8 space-y-4">
+                      <div className="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/20 flex items-center justify-center mx-auto">
+                        <CheckCircle className="w-8 h-8 text-green-600 dark:text-green-400" />
                       </div>
-                      
-                      <div>
-                        <Label htmlFor="email">Email</Label>
-                        <Input 
-                          id="email" 
-                          type="email" 
-                          placeholder="john@company.com" 
-                          value={formData.email}
-                          onChange={(e) => handleInputChange('email', e.target.value)}
-                          required
-                        />
-                      </div>
-                      
-                      <div>
-                        <Label htmlFor="phone">Phone Number</Label>
-                        <Input 
-                          id="phone" 
-                          type="tel" 
-                          placeholder="+27 78 706 3495" 
-                          value={formData.phone}
-                          onChange={(e) => handleInputChange('phone', e.target.value)}
-                        />
-                      </div>
-                      
-                      <div>
-                        <Label htmlFor="company">Company</Label>
-                        <Input 
-                          id="company" 
-                          placeholder="Your Company" 
-                          value={formData.company}
-                          onChange={(e) => handleInputChange('company', e.target.value)}
-                        />
-                      </div>
-                      
-                      <div>
-                        <Label htmlFor="service">Service Interested In</Label>
-                        <Select value={formData.service} onValueChange={(value) => handleInputChange('service', value)}>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select a service" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="ai-automation">AI Automation</SelectItem>
-                            <SelectItem value="web-development">Web Development</SelectItem>
-                            <SelectItem value="both">Both Services</SelectItem>
-                            <SelectItem value="consultation">Consultation</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      
-                      <div>
-                        <Label htmlFor="message">Project Details</Label>
-                        <Textarea 
-                          id="message" 
-                          placeholder="Tell us about your project, goals, and any specific requirements..." 
-                          rows={4} 
-                          value={formData.message}
-                          onChange={(e) => handleInputChange('message', e.target.value)}
-                          required
-                        />
-                      </div>
-                      
-                      <Button type="submit" className="w-full bg-gradient-to-r from-accent to-neon text-primary">
-                        <Send className="mr-2 h-4 w-4" />
-                        Send Message
+                      <h3 className="text-xl font-semibold text-primary">Message Sent Successfully!</h3>
+                      <p className="text-muted-foreground">
+                        Thank you for contacting Tech Q. We've received your message and will get back to you within 24 hours.
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        You should also receive a confirmation email shortly.
+                      </p>
+                      <Button 
+                        onClick={resetForm}
+                        variant="outline" 
+                        className="mt-4"
+                      >
+                        Send Another Message
                       </Button>
                     </div>
-                  </form>
+                  ) : (
+                    <form onSubmit={handleSubmit}>
+                      <div className="space-y-6">
+                        <div className="grid grid-cols-2 gap-4">
+                          <div>
+                            <Label htmlFor="firstName">First Name *</Label>
+                            <Input 
+                              id="firstName" 
+                              placeholder="John" 
+                              value={formData.firstName}
+                              onChange={(e) => handleInputChange('firstName', e.target.value)}
+                              required
+                              disabled={isSubmitting}
+                            />
+                          </div>
+                          <div>
+                            <Label htmlFor="lastName">Last Name *</Label>
+                            <Input 
+                              id="lastName" 
+                              placeholder="Doe" 
+                              value={formData.lastName}
+                              onChange={(e) => handleInputChange('lastName', e.target.value)}
+                              required
+                              disabled={isSubmitting}
+                            />
+                          </div>
+                        </div>
+                        
+                        <div>
+                          <Label htmlFor="email">Email *</Label>
+                          <Input 
+                            id="email" 
+                            type="email" 
+                            placeholder="john@company.com" 
+                            value={formData.email}
+                            onChange={(e) => handleInputChange('email', e.target.value)}
+                            required
+                            disabled={isSubmitting}
+                          />
+                        </div>
+                        
+                        <div>
+                          <Label htmlFor="phone">Phone Number</Label>
+                          <Input 
+                            id="phone" 
+                            type="tel" 
+                            placeholder="061 512 6221" 
+                            value={formData.phone}
+                            onChange={(e) => handleInputChange('phone', e.target.value)}
+                            disabled={isSubmitting}
+                          />
+                        </div>
+                        
+                        <div>
+                          <Label htmlFor="company">Company</Label>
+                          <Input 
+                            id="company" 
+                            placeholder="Your Company" 
+                            value={formData.company}
+                            onChange={(e) => handleInputChange('company', e.target.value)}
+                            disabled={isSubmitting}
+                          />
+                        </div>
+                        
+                        <div>
+                          <Label htmlFor="service">Service Interested In</Label>
+                          <Select 
+                            value={formData.service} 
+                            onValueChange={(value) => handleInputChange('service', value)}
+                            disabled={isSubmitting}
+                          >
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select a service" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="ai-automation">AI Automation</SelectItem>
+                              <SelectItem value="web-development">Web Development</SelectItem>
+                              <SelectItem value="both">Both Services</SelectItem>
+                              <SelectItem value="consultation">Consultation</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                        
+                        <div>
+                          <Label htmlFor="message">Project Details *</Label>
+                          <Textarea 
+                            id="message" 
+                            placeholder="Tell us about your project, goals, and any specific requirements..." 
+                            rows={4} 
+                            value={formData.message}
+                            onChange={(e) => handleInputChange('message', e.target.value)}
+                            required
+                            disabled={isSubmitting}
+                          />
+                        </div>
+                        
+                        <Button 
+                          type="submit" 
+                          className="w-full bg-gradient-to-r from-accent to-neon text-primary"
+                          disabled={isSubmitting}
+                        >
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                              Sending Message...
+                            </>
+                          ) : (
+                            <>
+                              <Send className="mr-2 h-4 w-4" />
+                              Send Message
+                            </>
+                          )}
+                        </Button>
+                        
+                        <p className="text-xs text-muted-foreground text-center">
+                          * Required fields. We'll never share your information with third parties.
+                        </p>
+                      </div>
+                    </form>
+                  )}
                 </CardContent>
               </Card>
 
