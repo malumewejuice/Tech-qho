@@ -19,7 +19,8 @@ const Contact = () => {
     phone: '',
     company: '',
     service: '',
-    message: ''
+    message: '',
+    honeypot: '' // Hidden field for bot detection
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -38,7 +39,8 @@ const Contact = () => {
       phone: '',
       company: '',
       service: '',
-      message: ''
+      message: '',
+      honeypot: ''
     });
     setIsSubmitted(false);
   };
@@ -235,6 +237,19 @@ const Contact = () => {
                             onChange={(e) => handleInputChange('message', e.target.value)}
                             required
                             disabled={isSubmitting}
+                          />
+                        </div>
+                        
+                        {/* Honeypot field - hidden from users but visible to bots */}
+                        <div style={{ position: 'absolute', left: '-9999px', visibility: 'hidden', opacity: 0 }}>
+                          <Input 
+                            name="honeypot"
+                            type="text"
+                            value={formData.honeypot}
+                            onChange={(e) => handleInputChange('honeypot', e.target.value)}
+                            tabIndex={-1}
+                            autoComplete="off"
+                            aria-hidden="true"
                           />
                         </div>
                         
