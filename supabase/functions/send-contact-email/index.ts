@@ -5,15 +5,15 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2.38.4";
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
 const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
-const allowedOrigins = Deno.env.get("ALLOWED_ORIGINS")?.split(',') || [];
+const allowedOrigins = Deno.env.get("ALLOWED_ORIGINS")?.split(',') || ['*'];
 
 const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
 // Helper function to get CORS headers
 const getCorsHeaders = (origin: string | null) => {
-  const isAllowedOrigin = origin && allowedOrigins.includes(origin);
+  const isAllowedOrigin = allowedOrigins.includes('*') || (origin && allowedOrigins.includes(origin));
   return {
-    "Access-Control-Allow-Origin": isAllowedOrigin ? origin : "null",
+    "Access-Control-Allow-Origin": isAllowedOrigin ? (origin || '*') : "null",
     "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
   };
