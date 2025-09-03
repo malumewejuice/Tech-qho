@@ -62,10 +62,13 @@ const Contact = () => {
 
     try {
       console.log('Form submitted:', formData);
+      console.log('About to call edge function...');
       
       const { data, error } = await supabase.functions.invoke('send-contact-email', {
         body: formData
       });
+      
+      console.log('Edge function response:', { data, error });
 
       if (error) {
         console.error('Edge function error:', error);
