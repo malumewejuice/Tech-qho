@@ -63,14 +63,22 @@ const Contact = () => {
     try {
       console.log('Form submitted:', formData);
       
-      // Simulate form submission without edge function
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: formData
+      });
+
+      if (error) {
+        console.error('Edge function error:', error);
+        throw new Error(error.message || 'Failed to send email');
+      }
+
+      console.log('Email sent successfully:', data);
       
       setIsSubmitted(true);
       
       toast({
-        title: "Message Received!",
-        description: "Thank you for contacting us. We'll get back to you soon.",
+        title: "Message Sent Successfully!",
+        description: "Thank you for contacting us. We'll get back to you within 24 hours.",
         duration: 5000,
       });
       
