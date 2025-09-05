@@ -45,56 +45,26 @@ const handler = async (req: Request): Promise<Response> => {
       });
     }
 
-    // Send email to business
-    const businessEmailResponse = await resend.emails.send({
-      from: "Contact Form <onboarding@resend.dev>",
+    // Send simple email to techqho@outlook.com
+    const emailResponse = await resend.emails.send({
+      from: "Website Contact <onboarding@resend.dev>",
       to: ["techqho@outlook.com"],
-      subject: `New Contact Form Submission from ${formData.firstName} ${formData.lastName}`,
+      subject: `New Contact: ${formData.firstName} ${formData.lastName}`,
       html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${formData.firstName} ${formData.lastName}</p>
+        <h2>New Contact Form Message</h2>
+        <p><strong>From:</strong> ${formData.firstName} ${formData.lastName}</p>
         <p><strong>Email:</strong> ${formData.email}</p>
         ${formData.phone ? `<p><strong>Phone:</strong> ${formData.phone}</p>` : ''}
         ${formData.company ? `<p><strong>Company:</strong> ${formData.company}</p>` : ''}
         ${formData.service ? `<p><strong>Service:</strong> ${formData.service}</p>` : ''}
         <p><strong>Message:</strong></p>
         <p>${formData.message}</p>
-        
-        <hr>
-        <p><em>This message was sent from your website contact form.</em></p>
       `,
     });
 
-    console.log("Business email sent:", businessEmailResponse);
+    console.log("Email sent successfully:", emailResponse);
 
-    // Send confirmation email to customer
-    const confirmationEmailResponse = await resend.emails.send({
-      from: "Tech QHO <onboarding@resend.dev>",
-      to: [formData.email],
-      subject: "Thank you for contacting us!",
-      html: `
-        <h2>Thank you for your message!</h2>
-        <p>Dear ${formData.firstName},</p>
-        <p>We have received your message and will get back to you within 24 hours.</p>
-        
-        <h3>Your message:</h3>
-        <p>${formData.message}</p>
-        
-        <p>Best regards,<br>
-        The Tech QHO Team</p>
-        
-        <hr>
-        <p><em>Please do not reply to this email. If you need immediate assistance, contact us directly at techqho@outlook.com</em></p>
-      `,
-    });
-
-    console.log("Confirmation email sent:", confirmationEmailResponse);
-
-    return new Response(JSON.stringify({ 
-      success: true, 
-      businessEmail: businessEmailResponse,
-      confirmationEmail: confirmationEmailResponse 
-    }), {
+    return new Response(JSON.stringify({ success: true }), {
       status: 200,
       headers: { "Content-Type": "application/json", ...corsHeaders },
     });
